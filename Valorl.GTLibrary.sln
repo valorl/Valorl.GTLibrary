@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Valorl.GTLibrary", "src\Valorl.GTLibrary\Valorl.GTLibrary.xproj", "{1D813DD8-F235-42E5-9E4C-6C1C283FB93D}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Valorl.GTLibrary.Api", "src\Valorl.GTLibrary.Api\Valorl.GTLibrary.Api.xproj", "{1D813DD8-F235-42E5-9E4C-6C1C283FB93D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
