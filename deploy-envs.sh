@@ -4,7 +4,7 @@
 export IMAGE_NAME=valorl-gtlibrary-backend
 export IMAGE_VERSION=latest
 
-export AWS_DEFAULT_REGION=eu-west-1b
+export AWS_DEFAULT_REGION=eu-west-1
 export AWS_ECS_CLUSTER_NAME=default
 export AWS_VIRTUAL_HOST=api.gtl.enartee.online
 
