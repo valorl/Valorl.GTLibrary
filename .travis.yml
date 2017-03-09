@@ -1,6 +1,6 @@
 sudo: required
 language: csharp
-solution: Valorl.GTLibrary.sln
+solution: Valorl.GTLibrary.Api.sln
 services:
   - docker
 matrix:
