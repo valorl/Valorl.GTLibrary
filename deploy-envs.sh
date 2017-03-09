@@ -2,7 +2,7 @@
 
 # set environment variables used in deploy.sh and AWS task-definition.json:
 export IMAGE_NAME=valorl-gtlibrary-backend
-export IMAGE_VERSION=latest
+export IMAGE_VERSION=$TRAVIS_COMMIT-$TRAVIS_BUILD_NUMBER
 
 export AWS_DEFAULT_REGION=eu-west-1
 export AWS_ECS_CLUSTER_NAME=default
