@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.Api", "Valorl.GTLibrary.Api\Valorl.GTLibrary.Api.csproj", "{CF3811B0-C8A5-457C-B717-D2DA600ACE95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.UnitTests", "..\Valorl.GTLibrary.UnitTests\Valorl.GTLibrary.UnitTests.csproj", "{256478ED-56FB-423E-A26C-278B0EEA26F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CF3811B0-C8A5-457C-B717-D2DA600ACE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3811B0-C8A5-457C-B717-D2DA600ACE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF3811B0-C8A5-457C-B717-D2DA600ACE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256478ED-56FB-423E-A26C-278B0EEA26F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256478ED-56FB-423E-A26C-278B0EEA26F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256478ED-56FB-423E-A26C-278B0EEA26F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256478ED-56FB-423E-A26C-278B0EEA26F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
