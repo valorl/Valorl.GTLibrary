@@ -23,7 +23,8 @@ before_script:
   - chmod +x ./scripts/run-tests.sh
   - chmod +x ./scripts/after-success.sh
 script:
-  - ./scripts/travis-build.sh
-  - ./scripts/run-tests.sh
+  - cd scripts
+  - ./travis-build.sh
+  - ./run-tests.sh
 after_success:
   - cd scripts && ./after-success.sh
