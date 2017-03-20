@@ -10,7 +10,7 @@ namespace Valorl.GTLibrary.UnitTests
         public void Test1()
         {
             var x = 1;
-            var y = 2;
+            var y = 1;
             x.ShouldBeEquivalentTo(y);
         }
     }
