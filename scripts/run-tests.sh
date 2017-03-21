@@ -1,3 +1,3 @@
 #!/bin/bash
-cd ../src/Valorl.GTLibrary.UnitTests
+cd ../api/Valorl.GTLibrary.UnitTests
 dotnet test

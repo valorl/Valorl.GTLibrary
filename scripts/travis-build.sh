@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ../src
+cd ../api
 dotnet restore
 dotnet build
