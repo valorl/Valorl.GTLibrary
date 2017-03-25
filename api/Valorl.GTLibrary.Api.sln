@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.Api", "Valorl.GTLibrary.Api\Valorl.GTLibrary.Api.csproj", "{CF3811B0-C8A5-457C-B717-D2DA600ACE95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valorl.GTLibrary.Api", "Valorl.GTLibrary.Api\Valorl.GTLibrary.Api.csproj", "{CF3811B0-C8A5-457C-B717-D2DA600ACE95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valorl.GTLibrary.UnitTests", "Valorl.GTLibrary.UnitTests\Valorl.GTLibrary.UnitTests.csproj", "{33659D15-4256-4D72-9971-51C3D8BFB2D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.DataAccess", "Valorl.GTLibrary.DataAccess\Valorl.GTLibrary.DataAccess.csproj", "{45704859-9FCD-4B20-A51D-F0CF178739BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.DTOs", "Valorl.GTLibrary.DTOs\Valorl.GTLibrary.DTOs.csproj", "{6114515D-DB97-485A-84F3-1F365E1D0EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valorl.GTLibrary.Models", "Valorl.GTLibrary.Models\Valorl.GTLibrary.Models.csproj", "{5249FC95-29B9-4803-BA5B-1A3DA1412F62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{33659D15-4256-4D72-9971-51C3D8BFB2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33659D15-4256-4D72-9971-51C3D8BFB2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33659D15-4256-4D72-9971-51C3D8BFB2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45704859-9FCD-4B20-A51D-F0CF178739BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45704859-9FCD-4B20-A51D-F0CF178739BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45704859-9FCD-4B20-A51D-F0CF178739BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45704859-9FCD-4B20-A51D-F0CF178739BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6114515D-DB97-485A-84F3-1F365E1D0EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6114515D-DB97-485A-84F3-1F365E1D0EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6114515D-DB97-485A-84F3-1F365E1D0EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6114515D-DB97-485A-84F3-1F365E1D0EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5249FC95-29B9-4803-BA5B-1A3DA1412F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5249FC95-29B9-4803-BA5B-1A3DA1412F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5249FC95-29B9-4803-BA5B-1A3DA1412F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5249FC95-29B9-4803-BA5B-1A3DA1412F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
