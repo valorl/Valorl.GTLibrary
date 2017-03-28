@@ -4,10 +4,16 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Valorl.GTLibrary.DataAccess\Valorl.GTLibrary.DataAccess.csproj" />
+    <ProjectReference Include="..\Valorl.GTLibrary.DTOs\Valorl.GTLibrary.DTOs.csproj" />
+    <ProjectReference Include="..\Valorl.GTLibrary.Models\Valorl.GTLibrary.Models.csproj" />
   </ItemGroup>
 
 </Project>

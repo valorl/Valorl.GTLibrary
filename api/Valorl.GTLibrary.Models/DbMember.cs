@@ -11,7 +11,7 @@ namespace Valorl.GTLibrary.Models
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-        public EMemberType Type { get; set; }
+        public EDbMemberType Type { get; set; }
         public string CampusAddress { get; set; }
         public string HomeAddress { get; set; }
         public string PhoneNr { get; set; }

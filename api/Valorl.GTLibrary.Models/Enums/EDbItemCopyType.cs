@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Valorl.GTLibrary.Models.Enums
 {
-    public enum EItemCopyType
+    public enum EDbItemCopyType
     {
         Unspecified = 0,
         Normal = 1,

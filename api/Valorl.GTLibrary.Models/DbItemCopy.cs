@@ -9,7 +9,7 @@ namespace Valorl.GTLibrary.Models
     {
         public string ISBN { get; set; }
         public int Number { get; set; }
-        public EItemCopyType Type { get; set; }
+        public EDbItemCopyType Type { get; set; }
         public bool IsAvailable { get; set; }
     }
 }

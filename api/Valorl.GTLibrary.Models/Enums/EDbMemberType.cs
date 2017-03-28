@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Valorl.GTLibrary.Models.Enums
 {
-    public enum EMemberType
+    public enum EDbMemberType
     {
         Student = 0,
         Staff = 1
