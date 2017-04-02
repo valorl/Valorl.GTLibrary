@@ -23,15 +23,15 @@ before_install:
 before_script:
   - chmod +x ./scripts/travis-build-api.sh
   - chmod +x ./scripts/travis-test-api.sh
-  - chmod +x ./scripts/travis-build-app.sh
-  - chmod +x ./scripts/travis-test-app.sh
+  # - chmod +x ./scripts/travis-build-app.sh
+  # - chmod +x ./scripts/travis-test-app.sh
   - chmod +x ./scripts/after-success.sh
 script:
   - cd scripts
   - ./travis-build-api.sh
   - ./travis-test-api.sh
-  - ./travis-build-app.sh
-  - ./travis-test-api.sh
+  # - ./travis-build-app.sh
+  # - ./travis-test-app.sh
 after_success:
   - cd scripts && ./after-success.sh
 deploy:
