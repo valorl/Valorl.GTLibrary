@@ -10,11 +10,11 @@ namespace Valorl.GTLibrary.UnitTests
     public class MappingTests
     {
         private readonly DbItem _dbItem;
-        private readonly DtoItem _dtoItem;
+        private readonly ItemDto _itemDto;
         public MappingTests()
         {
             _dbItem = CreateTestDbItem();
-            _dtoItem = CreateTestDtoItem();
+            _itemDto = CreateTestDtoItem();
         }
 
         [Fact]
@@ -35,16 +35,16 @@ namespace Valorl.GTLibrary.UnitTests
         [Fact]
         public void DtoItem_ToDb_Should_BeCorrect()
         {
-            var dbItem = _dtoItem.ToDb();
+            var dbItem = _itemDto.ToDb();
 
-            dbItem.ISBN.Should().Be(_dtoItem.ISBN);                               
-            dbItem.Author.Should().Be(_dtoItem.Author);
-            dbItem.Title.Should().Be(_dtoItem.Title);
-            dbItem.Description.Should().Be(_dtoItem.Description);
-            dbItem.IsLendable.Should().Be(_dtoItem.IsLendable);
+            dbItem.ISBN.Should().Be(_itemDto.ISBN);                               
+            dbItem.Author.Should().Be(_itemDto.Author);
+            dbItem.Title.Should().Be(_itemDto.Title);
+            dbItem.Description.Should().Be(_itemDto.Description);
+            dbItem.IsLendable.Should().Be(_itemDto.IsLendable);
 
-            dbItem.SubjectArea.Id.Should().Be(_dtoItem.SubjectArea.Id);
-            dbItem.SubjectArea.Name.Should().Be(_dtoItem.SubjectArea.Name);
+            dbItem.SubjectArea.Id.Should().Be(_itemDto.SubjectArea.Id);
+            dbItem.SubjectArea.Name.Should().Be(_itemDto.SubjectArea.Name);
         }
 
 
@@ -65,16 +65,16 @@ namespace Valorl.GTLibrary.UnitTests
             };
         }
 
-        private static DtoItem CreateTestDtoItem()
+        private static ItemDto CreateTestDtoItem()
         {
-            return new DtoItem()
+            return new ItemDto()
             {
                 ISBN = "9783161484100",
                 Author = "TestAuthor",
                 Title = "TestTitle",
                 Description = "TestDescription",
                 IsLendable = true,
-                SubjectArea = new DtoSubjectArea()
+                SubjectArea = new SubjectAreaDto()
                 {
                     Id = 123,
                     Name = "TestSubjectArea"

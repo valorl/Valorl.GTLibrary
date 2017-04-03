@@ -9,16 +9,16 @@ namespace Valorl.GTLibrary.Api.Mappings
 {
     public static class ItemMapping
     {
-        public static DtoItem ToDto(this DbItem dbItem)
+        public static ItemDto ToDto(this DbItem dbItem)
         {
-            var dtoItem = new DtoItem()
+            var dtoItem = new ItemDto()
             {
                 ISBN = dbItem.ISBN,
                 Author = dbItem.Author,
                 Title = dbItem.Title,
                 Description = dbItem.Description,
                 IsLendable = dbItem.IsLendable,
-                SubjectArea = new DtoSubjectArea()
+                SubjectArea = new SubjectAreaDto()
                 {
                     Id = dbItem.SubjectArea.Id,
                     Name = dbItem.SubjectArea.Name
@@ -27,19 +27,19 @@ namespace Valorl.GTLibrary.Api.Mappings
             return dtoItem;
         }
 
-        public static DbItem ToDb(this DtoItem dtoItem)
+        public static DbItem ToDb(this ItemDto itemDto)
         {
             var dbItem = new DbItem()
             {
-                ISBN = dtoItem.ISBN,
-                Author = dtoItem.Author,
-                Title = dtoItem.Title,
-                Description = dtoItem.Description,
-                IsLendable = dtoItem.IsLendable,
+                ISBN = itemDto.ISBN,
+                Author = itemDto.Author,
+                Title = itemDto.Title,
+                Description = itemDto.Description,
+                IsLendable = itemDto.IsLendable,
                 SubjectArea = new DbSubjectArea()
                 {
-                    Id = dtoItem.SubjectArea.Id,
-                    Name = dtoItem.SubjectArea.Name
+                    Id = itemDto.SubjectArea.Id,
+                    Name = itemDto.SubjectArea.Name
                 }
             };
             return dbItem;

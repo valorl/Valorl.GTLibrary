@@ -5,7 +5,7 @@ using Valorl.GTLibrary.DTOs.Enums;
 
 namespace Valorl.GTLibrary.DTOs
 {
-    public class MemberAddressDto
+    public class AddressDto
     {
         public int Id { get; set; }
         public string Street { get; set; }
