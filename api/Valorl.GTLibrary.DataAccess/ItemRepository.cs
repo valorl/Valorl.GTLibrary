@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
@@ -35,9 +36,36 @@ namespace Valorl.GTLibrary.DataAccess
             }
         }
 
-        public async Task<string> Create(string isbn, string author, string title, string description, bool isLendable, int subjectAreaId)
+        public async Task<DbItem> GetOneByIsbn(string isbn)
         {
-            throw new NotImplementedException();
+            const string query = @"SELECT *
+                                   FROM Items
+                                   WHERE ISBN = @isbn";
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var item = (await conn.QueryAsync<DbItem>(query, new { isbn })).SingleOrDefault();
+                return item;
+            }
+        }
+
+        public async Task<DbItem> Create(DbItem item)
+        {
+            const string query = @"INSERT INTO Items (ISBN,Author,Title,Description,IsLendable,SubjectArea_Id)
+                                   VALUES (@isbn, @author, @title, @description, @isLendable, @subjectAreaId)";
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                await conn.ExecuteAsync(query, new
+                {
+                    isbn = item.ISBN,
+                    author = item.Author,
+                    title = item.Title,
+                    description = item.Description,
+                    isLendable = item.IsLendable,
+                    subjectAreaId = item.SubjectArea.Id
+                });
+
+                return item;
+            }
         }
     }
 }

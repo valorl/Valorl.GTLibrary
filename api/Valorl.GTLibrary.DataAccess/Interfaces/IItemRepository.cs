@@ -9,8 +9,8 @@ namespace Valorl.GTLibrary.DataAccess.Interfaces
     public interface IItemRepository
     {
         Task<IEnumerable<DbItem>> GetAll();
-        Task<string> Create(string isbn, string author, string title, 
-                      string description, bool isLendable, int subjectAreaId);
+        Task<DbItem> GetOneByIsbn(string isbn);
+        Task<DbItem> Create(DbItem item);
 
     }
 }

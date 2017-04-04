@@ -18,33 +18,37 @@ namespace Valorl.GTLibrary.UnitTests
         }
 
         [Fact]
-        public void DbItem_ToDto_Should_BeCorrect()
+        public void DbItem_ToDto_Should_BeIdentical()
         {
+            // Act
             var dtoItem = _dbItem.ToDto();
 
-            dtoItem.ISBN.Should().Be(_dbItem.ISBN);
-            dtoItem.Author.Should().Be(_dbItem.Author);
-            dtoItem.Title.Should().Be(_dbItem.Title);
-            dtoItem.Description.Should().Be(_dbItem.Description);
-            dtoItem.IsLendable.Should().Be(_dbItem.IsLendable);
+            // Assert
+            Assert.Equal(dtoItem.ISBN, _dbItem.ISBN);
+            Assert.Equal(dtoItem.Author, _dbItem.Author);
+            Assert.Equal(dtoItem.Title, _dbItem.Title);
+            Assert.Equal(dtoItem.Description, _dbItem.Description);
+            Assert.Equal(dtoItem.IsLendable, _dbItem.IsLendable);
 
-            dtoItem.SubjectArea.Id.Should().Be(_dbItem.SubjectArea.Id);
-            dtoItem.SubjectArea.Name.Should().Be(_dbItem.SubjectArea.Name);
+            Assert.Equal(dtoItem.SubjectArea.Id, _dbItem.SubjectArea.Id);
+            Assert.Equal(dtoItem.SubjectArea.Name, _dbItem.SubjectArea.Name);
         }
 
         [Fact]
-        public void DtoItem_ToDb_Should_BeCorrect()
+        public void ItemDto_ToDb_Should_BeIdentical()
         {
+            // Act
             var dbItem = _itemDto.ToDb();
 
-            dbItem.ISBN.Should().Be(_itemDto.ISBN);                               
-            dbItem.Author.Should().Be(_itemDto.Author);
-            dbItem.Title.Should().Be(_itemDto.Title);
-            dbItem.Description.Should().Be(_itemDto.Description);
-            dbItem.IsLendable.Should().Be(_itemDto.IsLendable);
+            // Assert
+            Assert.Equal(dbItem.ISBN, _itemDto.ISBN);
+            Assert.Equal(dbItem.Author, _itemDto.Author);
+            Assert.Equal(dbItem.Title, _itemDto.Title);
+            Assert.Equal(dbItem.Description, _itemDto.Description);
+            Assert.Equal(dbItem.IsLendable, _itemDto.IsLendable);
 
-            dbItem.SubjectArea.Id.Should().Be(_itemDto.SubjectArea.Id);
-            dbItem.SubjectArea.Name.Should().Be(_itemDto.SubjectArea.Name);
+            Assert.Equal(dbItem.SubjectArea.Id, _itemDto.SubjectArea.Id);
+            Assert.Equal(dbItem.SubjectArea.Name, _itemDto.SubjectArea.Name);
         }
 
 
