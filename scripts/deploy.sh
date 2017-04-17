@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../deploy-envs.sh
+source ./deploy-envs.sh
 
 export AWS_ECS_REPO_DOMAIN=$AWS_ACCOUNT_NUMBER.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 export ECS_SERVICE=$IMAGE_NAME-service
