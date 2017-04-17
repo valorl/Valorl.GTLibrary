@@ -1,5 +1,5 @@
 FROM microsoft/dotnet:latest
-COPY src /app
+COPY api /app
 WORKDIR /app
 RUN ["dotnet", "restore"]
 WORKDIR /app/Valorl.GTLibrary.Api
