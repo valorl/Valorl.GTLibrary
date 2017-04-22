@@ -2,53 +2,78 @@ using FluentAssertions;
 using System;
 using Valorl.GTLibrary.Api.Mappings;
 using Valorl.GTLibrary.DTOs;
+using Valorl.GTLibrary.DTOs.Enums;
 using Valorl.GTLibrary.Models;
+using Valorl.GTLibrary.Models.Enums;
 using Xunit;
 
 namespace Valorl.GTLibrary.UnitTests
 {
     public class MappingTests
     {
-        private readonly DbItem _dbItem;
-        private readonly ItemDto _itemDto;
-        public MappingTests()
+
+        [Fact]
+        public void DbItem_ToDto_Should_HaveCorrectProperties()
         {
-            _dbItem = CreateTestDbItem();
-            _itemDto = CreateTestDtoItem();
+            // Arrange 
+            var dbItem = CreateTestDbItem();
+            // Act
+            var itemDto = dbItem.ToDto();
+            // Assert
+            Assert.Equal(dbItem.ISBN, itemDto.ISBN);
+            Assert.Equal(dbItem.Author, itemDto.Author);
+            Assert.Equal(dbItem.Title, itemDto.Title);
+            Assert.Equal(dbItem.Description, itemDto.Description);
+            Assert.Equal(dbItem.IsLendable, itemDto.IsLendable);
+
+            Assert.Equal(dbItem.SubjectArea.Id, itemDto.SubjectArea.Id);
+            Assert.Equal(dbItem.SubjectArea.Name, itemDto.SubjectArea.Name);
         }
 
         [Fact]
-        public void DbItem_ToDto_Should_BeIdentical()
+        public void ItemDto_ToDbModel_Should_HaveCorrectProperties()
         {
+            // Arrange
+            var itemDto = CreateTestItemDto();
             // Act
-            var dtoItem = _dbItem.ToDto();
-
+            var dbItem = itemDto.ToDbModel();
             // Assert
-            Assert.Equal(dtoItem.ISBN, _dbItem.ISBN);
-            Assert.Equal(dtoItem.Author, _dbItem.Author);
-            Assert.Equal(dtoItem.Title, _dbItem.Title);
-            Assert.Equal(dtoItem.Description, _dbItem.Description);
-            Assert.Equal(dtoItem.IsLendable, _dbItem.IsLendable);
+            Assert.Equal(itemDto.ISBN, dbItem.ISBN);
+            Assert.Equal(itemDto.Author, dbItem.Author);
+            Assert.Equal(itemDto.Title, dbItem.Title);
+            Assert.Equal(itemDto.Description, dbItem.Description);
+            Assert.Equal(itemDto.IsLendable, dbItem.IsLendable);
 
-            Assert.Equal(dtoItem.SubjectArea.Id, _dbItem.SubjectArea.Id);
-            Assert.Equal(dtoItem.SubjectArea.Name, _dbItem.SubjectArea.Name);
+            Assert.Equal(itemDto.SubjectArea.Id, dbItem.SubjectArea.Id);
+            Assert.Equal(itemDto.SubjectArea.Name, dbItem.SubjectArea.Name);
         }
 
         [Fact]
-        public void ItemDto_ToDb_Should_BeIdentical()
+        public void DbItemCopy_ToDto_Should_HaveCorrectProperties()
         {
+            // Arrange 
+            var dbItemCopy = CreateTestDbItemCopy();
             // Act
-            var dbItem = _itemDto.ToDb();
-
+            var itemCopyDto = dbItemCopy.ToDto();
             // Assert
-            Assert.Equal(dbItem.ISBN, _itemDto.ISBN);
-            Assert.Equal(dbItem.Author, _itemDto.Author);
-            Assert.Equal(dbItem.Title, _itemDto.Title);
-            Assert.Equal(dbItem.Description, _itemDto.Description);
-            Assert.Equal(dbItem.IsLendable, _itemDto.IsLendable);
+            Assert.Equal(dbItemCopy.Number, itemCopyDto.Number);
+            Assert.Equal(dbItemCopy.ISBN, itemCopyDto.ISBN);
+            Assert.Equal(dbItemCopy.IsAvailable, itemCopyDto.IsAvailable);
+            Assert.Equal(EItemCopyTypeDto.Normal, itemCopyDto.Type);
+        }
 
-            Assert.Equal(dbItem.SubjectArea.Id, _itemDto.SubjectArea.Id);
-            Assert.Equal(dbItem.SubjectArea.Name, _itemDto.SubjectArea.Name);
+        [Fact]
+        public void ItemCopyDto_ToDbModel_Should_HaveCorrectProperties()
+        {
+            // Arrange
+            var itemCopyDto = CreateTestItemCopyDto();
+            // Act
+            var dbItemCopy = itemCopyDto.ToDbModel();
+            // Assert
+            Assert.Equal(itemCopyDto.Number, dbItemCopy.Number);
+            Assert.Equal(itemCopyDto.ISBN, dbItemCopy.ISBN);
+            Assert.Equal(itemCopyDto.IsAvailable, dbItemCopy.IsAvailable);
+            Assert.Equal(EDbItemCopyType.Normal, dbItemCopy.Type);
         }
 
 
@@ -69,7 +94,7 @@ namespace Valorl.GTLibrary.UnitTests
             };
         }
 
-        private static ItemDto CreateTestDtoItem()
+        private static ItemDto CreateTestItemDto()
         {
             return new ItemDto()
             {
@@ -85,5 +110,28 @@ namespace Valorl.GTLibrary.UnitTests
                 }
             };
         }
+
+        private static DbItemCopy CreateTestDbItemCopy()
+        {
+            return new DbItemCopy()
+            {
+                Number = 1,
+                ISBN = "9783161484100",
+                IsAvailable = true,
+                Type = EDbItemCopyType.Normal
+            };
+        }
+
+        private static ItemCopyDto CreateTestItemCopyDto()
+        {
+            return new ItemCopyDto()
+            {
+                Number = 1,
+                ISBN = "9783161484100",
+                IsAvailable = true,
+                Type = EItemCopyTypeDto.Normal
+            };
+        }
+
     }
 }

@@ -47,7 +47,7 @@ namespace Valorl.GTLibrary.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var dbItem = itemDto.ToDb();
+            var dbItem = itemDto.ToDbModel();
             var created = await _itemRepository.Create(dbItem);
 
             return Created($"/{itemDto.ISBN}", created.ToDto());

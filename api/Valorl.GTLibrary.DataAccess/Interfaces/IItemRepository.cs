@@ -11,7 +11,6 @@ namespace Valorl.GTLibrary.DataAccess.Interfaces
         Task<IEnumerable<DbItem>> GetAll();
         Task<DbItem> GetOneByIsbn(string isbn);
         Task<DbItem> Create(DbItem item);
-
     }
 }
 

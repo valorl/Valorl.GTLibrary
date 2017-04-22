@@ -27,7 +27,7 @@ namespace Valorl.GTLibrary.Api.Mappings
             return dtoItem;
         }
 
-        public static DbItem ToDb(this ItemDto itemDto)
+        public static DbItem ToDbModel(this ItemDto itemDto)
         {
             var dbItem = new DbItem()
             {
