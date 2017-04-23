@@ -85,7 +85,7 @@ namespace Valorl.GTLibrary.DataAccess
                                 isbn = copy.ISBN,
                                 isAvailable = copy.IsAvailable,
                                 type = copy.Type
-                            });
+                            }, trans);
                         }
                         trans.Commit();
                     }

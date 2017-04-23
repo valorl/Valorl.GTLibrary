@@ -7,6 +7,6 @@ namespace Valorl.GTLibrary.DTOs.Enums
     public enum EMemberTypeDto
     {
         Student = 0,
-        Staff = 1
+        Professor = 1
     }
 }
