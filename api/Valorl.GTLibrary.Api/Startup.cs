@@ -39,6 +39,10 @@ namespace Valorl.GTLibrary.Api
             var builder = new ContainerBuilder();
             RegisterRepository<ItemRepository, IItemRepository>(builder);
             RegisterRepository<ItemCopyRepository, IItemCopyRepository>(builder);
+            RegisterRepository<LibraryRepository, ILibraryRepository>(builder);
+            RegisterRepository<AcquirementRepository, IAcquirementRepository>(builder);
+            RegisterRepository<MemberRepository, IMemberRepository>(builder);
+            RegisterRepository<LibraryRepository, ILibraryRepository>(builder);
 
             builder.Populate(services);
             var container = builder.Build();

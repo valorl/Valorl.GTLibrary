@@ -7,6 +7,7 @@ namespace Valorl.GTLibrary.DTOs.Enums
     public enum EAddressTypeDto
     {
         Home = 0,
-        Campus = 1
+        Campus = 1,
+        Library = 2
     }
 }

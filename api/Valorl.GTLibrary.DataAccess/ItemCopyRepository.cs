@@ -41,7 +41,7 @@ namespace Valorl.GTLibrary.DataAccess
             using (var conn = new SqlConnection(_connectionString))
             {
                 var copies = await conn.QueryAsync<DbItemCopy>(query, new {number, isbn});
-                var copy = copies.Single();
+                var copy = copies.SingleOrDefault();
                 return copy;
             }
         }

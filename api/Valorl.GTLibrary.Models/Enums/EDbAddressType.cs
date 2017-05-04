@@ -7,6 +7,7 @@ namespace Valorl.GTLibrary.Models.Enums
     public enum EDbAddressType
     {
         Home = 0,
-        Campus = 1
+        Campus = 1,
+        Library = 2
     }
 }

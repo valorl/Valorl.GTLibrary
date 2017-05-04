@@ -1,15 +1,16 @@
-using FluentAssertions;
 using System;
+using GenFu;
 using Valorl.GTLibrary.Api.Mappings;
 using Valorl.GTLibrary.DTOs;
 using Valorl.GTLibrary.DTOs.Enums;
 using Valorl.GTLibrary.Models;
 using Valorl.GTLibrary.Models.Enums;
+using Valorl.GTLibrary.UnitTests.Utils;
 using Xunit;
 
 namespace Valorl.GTLibrary.UnitTests
 {
-    public class MappingTests
+    public class MappingTests : MappingTestBase
     {
 
         [Fact]
@@ -74,64 +75,63 @@ namespace Valorl.GTLibrary.UnitTests
             Assert.Equal(itemCopyDto.ISBN, dbItemCopy.ISBN);
             Assert.Equal(itemCopyDto.IsAvailable, dbItemCopy.IsAvailable);
             Assert.Equal(EDbItemCopyType.Normal, dbItemCopy.Type);
+
+            //AssertUtils.AggregateMultiple(
+            //    () => Assert.Equal(1, 2),
+            //    () => Assert.Equal(3, 4));
         }
 
-
-        private static DbItem CreateTestDbItem()
+        [Fact]
+        public void DbAddress_ToDto_Should_HaveCorrectProperties()
         {
-            return new DbItem()
-            {
-                ISBN = "9783161484100",
-                Author = "TestAuthor",
-                Title = "TestTitle",
-                Description = "TestDescription",
-                IsLendable = true,
-                SubjectArea = new DbSubjectArea()
-                {
-                    Id = 123,
-                    Name = "TestSubjectArea"
-                }
-            };
+            // Arrange
+            var dbAddress = A.New<DbAddress>();
+            // Act
+            var dto = dbAddress.ToDto();
+            // Assert
+            AssertUtils.AggregateMultiple(
+                () => Assert.Equal(dbAddress.Id, dto.Id),
+                () => Assert.Equal(dbAddress.Street, dto.Street),
+                () => Assert.Equal(dbAddress.Number, dto.Number),
+                () => Assert.Equal(dbAddress.Type, (EDbAddressType)(int)dto.Type),
+                () => Assert.Equal(dbAddress.Country, dto.Country),
+                () => Assert.Equal(dbAddress.ZipCode, dto.ZipCode),
+                () => Assert.Equal(dbAddress.City, dto.City)
+            );
         }
 
-        private static ItemDto CreateTestItemDto()
+        [Fact]
+        public void AddressDto_ToDbModel_Should_HaveCorrectProperties()
         {
-            return new ItemDto()
-            {
-                ISBN = "9783161484100",
-                Author = "TestAuthor",
-                Title = "TestTitle",
-                Description = "TestDescription",
-                IsLendable = true,
-                SubjectArea = new SubjectAreaDto()
-                {
-                    Id = 123,
-                    Name = "TestSubjectArea"
-                }
-            };
+            // Arrange
+            var dto = A.New<AddressDto>();
+            // Act
+            var dbAddress = dto.ToDbModel();
+            // Assert
+            AssertUtils.AggregateMultiple(
+                () => Assert.Equal(dto.Id, dbAddress.Id),
+                () => Assert.Equal(dto.Street, dbAddress.Street),
+                () => Assert.Equal(dto.Number, dbAddress.Number),
+                () => Assert.Equal(dto.Type, (EAddressTypeDto)(int)dbAddress.Type),
+                () => Assert.Equal(dto.Country, dbAddress.Country),
+                () => Assert.Equal(dto.ZipCode, dbAddress.ZipCode),
+                () => Assert.Equal(dto.City, dbAddress.City)
+            );
         }
 
-        private static DbItemCopy CreateTestDbItemCopy()
+        [Fact]
+        public void DbLibrary_ToDto_Should_HaveCorrectProperties()
         {
-            return new DbItemCopy()
-            {
-                Number = 1,
-                ISBN = "9783161484100",
-                IsAvailable = true,
-                Type = EDbItemCopyType.Normal
-            };
+            // Arrange
+            var dbLibrary = A.New<DbLibrary>();
+            dbLibrary.Address = A.New<DbAddress>();
+            // Act
+            var dto = dbLibrary.ToDto();
+            // Assert
+            AssertUtils.AggregateMultiple(
+                () => Assert.Equal(dbLibrary.Id, dto.Id),
+                () => Assert.Equal(dbLibrary.Name, dto.Name)
+            );
         }
-
-        private static ItemCopyDto CreateTestItemCopyDto()
-        {
-            return new ItemCopyDto()
-            {
-                Number = 1,
-                ISBN = "9783161484100",
-                IsAvailable = true,
-                Type = EItemCopyTypeDto.Normal
-            };
-        }
-
     }
 }

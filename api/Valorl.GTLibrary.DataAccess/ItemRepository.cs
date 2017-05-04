@@ -38,13 +38,20 @@ namespace Valorl.GTLibrary.DataAccess
 
         public async Task<DbItem> GetOneByIsbn(string isbn)
         {
-            const string query = @"SELECT *
-                                   FROM Items
-                                   WHERE ISBN = @isbn";
+            const string query = @"SELECT i.*, sa.*
+                                   FROM Items i
+                                   INNER JOIN SubjectAreas sa
+                                   ON i.ISBN = @isbn
+                                   AND i.SubjectArea_Id = sa.Id";
             using (var conn = new SqlConnection(_connectionString))
             {
-                var item = (await conn.QueryAsync<DbItem>(query, new { isbn })).SingleOrDefault();
-                return item;
+                var dbItem = (await conn.QueryAsync<DbItem,DbSubjectArea, DbItem>(query, (item, area) =>
+                {
+                    item.SubjectArea = area;
+                    return item;
+                }, new { isbn })).SingleOrDefault();
+
+                return dbItem;
             }
         }
 

@@ -6,7 +6,7 @@ namespace Valorl.GTLibrary.DTOs
     public class ItemDto
     {
         [Required]
-        [RegularExpression(@"\b98(7|9)\d{10}")]
+        [RegularExpression(@"\b97(8|9)\d{10}")]
         public string ISBN { get; set; }
 
         [Required]
