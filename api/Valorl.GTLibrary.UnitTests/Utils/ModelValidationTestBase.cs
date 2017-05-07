@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Valorl.GTLibrary.DTOs;
@@ -33,6 +34,16 @@ namespace Valorl.GTLibrary.UnitTests.Utils
                 Email = "gandalf.white@gmail.com",
                 Addresses = new [] { new AddressDto(), new AddressDto() }
             }; 
+        }
+
+        protected NewAcquirementDto GenerateNewAcquirementDto(int noOfCopies = 1)
+        {
+            return new NewAcquirementDto()
+            {
+                ItemIsbn = "9871234567890",
+                LibraryId = Guid.Empty,
+                ItemCopyNumbers = Enumerable.Range(1, noOfCopies).ToArray()
+            };
         }
     }
 }

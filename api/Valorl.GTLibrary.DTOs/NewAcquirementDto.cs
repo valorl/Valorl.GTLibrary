@@ -12,6 +12,7 @@ namespace Valorl.GTLibrary.DTOs
         [Required]
         public string ItemIsbn { get; set; }
         [Required]
+        [MinLength(1)]
         public int[] ItemCopyNumbers { get; set; }
     }
 }

@@ -108,7 +108,7 @@ namespace Valorl.GTLibrary.SystemTests.Acceptance
             };
 
             var dtoJson = JsonConvert.SerializeObject(dto, new StringEnumConverter());
-            _response = await _client.PostAsync("/v1/acquirements", new StringContent(dtoJson, Encoding.UTF8, "application/json"));
+            _response = await _client.PostAsync("/integration/acquirements", new StringContent(dtoJson, Encoding.UTF8, "application/json"));
         }
 
         private void Then_response_should_be_successful()

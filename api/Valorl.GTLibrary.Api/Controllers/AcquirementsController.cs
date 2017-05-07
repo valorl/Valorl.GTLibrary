@@ -16,7 +16,6 @@ using Valorl.GTLibrary.Models.Enums;
 
 namespace Valorl.GTLibrary.Api.Controllers
 {
-    [Route("v1/acquirements")]
     public class AcquirementsController : Controller
     {
         private readonly IAcquirementRepository _acquirementRepository;
@@ -33,7 +32,7 @@ namespace Valorl.GTLibrary.Api.Controllers
             _itemCopyRepository = itemCopyRepository;
         }
 
-        [Route("")]
+        [Route("integration/acquirements")]
         [HttpPost]
         [ValidateModel]
         public async Task<IActionResult> PostAcquirement([FromBody] NewAcquirementDto dto)
