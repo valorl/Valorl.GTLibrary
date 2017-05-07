@@ -67,9 +67,13 @@ namespace Valorl.GTLibrary.DataAccess
                                           ReceivingLibrary_Id as ReceivingLibraryId, GivingLibrary_Id as GivingLibraryId
                                    FROM ItemAcquirements
                                    WHERE Id = @id";
+            const string queryCopyNrs = @"SELECT ItemCopy_Number FROM AcquirementCopies
+                                          WHERE ItemAcquirement_Id = @id";
             using (var conn = new SqlConnection(_connectionString))
             {
                 var dbAcquirement = (await conn.QueryAsync<DbAcquirement>(query, new {id})).SingleOrDefault();
+                var copies = await conn.QueryAsync<int>(queryCopyNrs, new {id});
+                dbAcquirement.CopyNumbers = copies.ToArray();
                 return dbAcquirement;
             }
         }

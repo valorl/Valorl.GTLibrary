@@ -94,7 +94,7 @@ namespace Valorl.GTLibrary.Api.Controllers
             return Created($"/{acquirementId}", resultDto);
         }
 
-        [Route("{id:guid}")]
+        [Route("acquirements/{id:guid}")]
         [HttpGet]
         public async Task<IActionResult> GetAcquirement(Guid id)
         {
