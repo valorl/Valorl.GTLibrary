@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using LightBDD.XUnit2;
@@ -59,7 +60,7 @@ namespace Valorl.GTLibrary.SystemTests.Acceptance
             var response = await _client.PostAsync("/v1/items", new StringContent(itemDtoJson, Encoding.UTF8, "application/json"));
         }
 
-        private async void And_the_item_has_an_available_copy()
+        private async void And_the_item_copies_are_available()
         {
             _itemCopyDto = new ItemCopyDto()
             {
@@ -103,8 +104,8 @@ namespace Valorl.GTLibrary.SystemTests.Acceptance
             var dto = new NewAcquirementDto()
             {
                 ItemIsbn = _itemDto.ISBN,
-                ItemCopyNumbers = new [] { _itemCopyDto.Number },
-                LibraryId = _libraryDto.Id
+                ItemCopyNumbers = new [] { _itemCopyDto?.Number ?? 0 },
+                LibraryId = _libraryDto?.Id ?? Guid.Empty
             };
 
             var dtoJson = JsonConvert.SerializeObject(dto, new StringEnumConverter());
@@ -133,6 +134,44 @@ namespace Valorl.GTLibrary.SystemTests.Acceptance
             var copy = JsonConvert.DeserializeObject<ItemCopyDto>(await copyResponse.Content.ReadAsStringAsync());
 
             Assert.False(copy.IsAvailable);
+        }
+
+
+        private void Given_the_item_is_missing()
+        {
+            _itemDto = new ItemDto()
+            {
+                ISBN = "9781613776056" 
+            };
+        }
+
+        private async void And_an_item_copy_is_not_avaiable()
+        {
+            _itemCopyDto = new ItemCopyDto()
+            {
+                ISBN = _itemDto.ISBN,
+                Number = 1,
+                Type = EItemCopyTypeDto.Normal,
+                IsAvailable = false
+            };
+
+            var itemCopyDtoJson = JsonConvert.SerializeObject(_itemCopyDto, new StringEnumConverter());
+            var response = await _client.PostAsync("/v1/items/9781613776056/copies", new StringContent(itemCopyDtoJson, Encoding.UTF8, "application/json"));
+        }
+
+        private void And_an_item_copy_is_invalid()
+        {
+            
+        }
+
+        private void And_the_library_does_not_exist()
+        {
+            
+        }
+
+        private void Then_response_should_be_BadRequest()
+        {
+            Assert.True(_response.StatusCode == HttpStatusCode.BadRequest);
         }
 
         public void Dispose()

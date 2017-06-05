@@ -63,17 +63,18 @@ namespace Valorl.GTLibrary.DataAccess
 
         public async Task<DbAcquirement> GetOne(Guid id)
         {
-            const string query = @"SELECT Id, AcquirementDateUtc, Status, Item_ISBN as ItemIsbn, 
+            const string query = @"SELECT Id, AcquirementDateUtc, Status 
                                           ReceivingLibrary_Id as ReceivingLibraryId, GivingLibrary_Id as GivingLibraryId
                                    FROM ItemAcquirements
                                    WHERE Id = @id";
-            const string queryCopyNrs = @"SELECT ItemCopy_Number FROM AcquirementCopies
+            const string queryCopyNrs = @"SELECT ItemCopy_Number as Number, ItemCopy_ISBN as Isbn FROM AcquirementCopies
                                           WHERE ItemAcquirement_Id = @id";
             using (var conn = new SqlConnection(_connectionString))
             {
                 var dbAcquirement = (await conn.QueryAsync<DbAcquirement>(query, new {id})).SingleOrDefault();
-                var copies = await conn.QueryAsync<int>(queryCopyNrs, new {id});
-                dbAcquirement.CopyNumbers = copies.ToArray();
+                var copies = (await conn.QueryAsync<dynamic>(queryCopyNrs, new {id})).ToArray();
+                dbAcquirement.ItemIsbn = copies.First().Isbn;
+                dbAcquirement.CopyNumbers = copies.Select(x => (int)x.Number).ToArray();
                 return dbAcquirement;
             }
         }

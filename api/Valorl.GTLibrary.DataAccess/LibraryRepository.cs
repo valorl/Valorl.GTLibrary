@@ -34,7 +34,7 @@ namespace Valorl.GTLibrary.DataAccess
                         library.Address = address;
                         return library;
                     }, new {id}))
-                    .Single();
+                    .SingleOrDefault();
                 return dbLibrary;
             }
         }

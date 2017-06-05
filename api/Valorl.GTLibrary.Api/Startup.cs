@@ -49,6 +49,14 @@ namespace Valorl.GTLibrary.Api
             return container.Resolve<IServiceProvider>();
         }
 
+        private void RegisterRepository<TImplementation, TInterface>(ContainerBuilder builder)
+        {
+            builder.RegisterType<TImplementation>()
+                .WithParameter("connectionString", Configuration.GetConnectionString("GTLibrary"))
+                .As<TInterface>()
+                .InstancePerLifetimeScope();
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -60,14 +68,6 @@ namespace Valorl.GTLibrary.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-        }
-
-        private void RegisterRepository<TImplementation, TInterface>(ContainerBuilder builder)
-        {
-            builder.RegisterType<TImplementation>()
-                .WithParameter("connectionString", Configuration.GetConnectionString("GTLibrary"))
-                .As<TInterface>()
-                .InstancePerLifetimeScope();
         }
     }
 }
