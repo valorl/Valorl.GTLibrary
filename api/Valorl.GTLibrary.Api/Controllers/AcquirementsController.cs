@@ -95,7 +95,7 @@ namespace Valorl.GTLibrary.Api.Controllers
             return Created($"/{acquirementId}", resultDto);
         }
 
-        [Route("acquirements/{id:guid}")]
+        [Route("integration/acquirements/{id:guid}")]
         [HttpGet]
         public async Task<IActionResult> GetAcquirement(Guid id)
         {
@@ -137,6 +137,21 @@ namespace Valorl.GTLibrary.Api.Controllers
             return Ok(dto);
         }
 
+        [Route("integration/acquirements/{id:guid}/status")]
+        [HttpPost]
+        public async Task<IActionResult> PostStatusUpdate(Guid id, string status)
+        {
+            var statusEnum = ParseStatus(status);
+
+            var acq = _acquirementRepository.GetOne(id);
+            if (acq == null) return NotFound();
+
+            await _acquirementRepository.UpdateStatus(id, statusEnum);
+
+            var updated = await _acquirementRepository.GetOne(id);
+
+            return Ok();
+        }
 
         private IActionResult InternalServerError(string message = null)
         {
@@ -145,5 +160,9 @@ namespace Valorl.GTLibrary.Api.Controllers
             return StatusCode(code);
         }
 
+        private EDbAcquirementStatus ParseStatus(string statusStr)
+        {
+            return (EDbAcquirementStatus) Enum.Parse(typeof(EDbAcquirementStatus), statusStr);
+        }
     }
 }

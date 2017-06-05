@@ -13,5 +13,6 @@ namespace Valorl.GTLibrary.DataAccess.Interfaces
                     int[] copyNumbers, Guid receivingId, Guid givingId);
 
         Task<DbAcquirement> GetOne(Guid id);
+        Task<DbAcquirement> UpdateStatus(Guid acquirementId, EDbAcquirementStatus newStatus);
     }
 }
