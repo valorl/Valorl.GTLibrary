@@ -18,7 +18,10 @@ namespace Valorl.GTLibrary.UnitTests
             // Arrange
             var acquirement = GenerateNewAcquirementDto(length);
             // Act
-            var isValid = ValidateProperty<NewAcquirementDto>(nameof(acquirement.ItemCopyNumbers), acquirement.ItemCopyNumbers);
+            var isValid = ValidateProperty<NewAcquirementDto>(
+                            nameof(acquirement.ItemCopyNumbers), 
+                            acquirement.ItemCopyNumbers
+                           );
             // Assert
             Assert.True(isValid);
         }
@@ -30,7 +33,10 @@ namespace Valorl.GTLibrary.UnitTests
             // Arrange
             var acquirement = GenerateNewAcquirementDto(length);
             // Act
-            var isValid = ValidateProperty<NewAcquirementDto>(nameof(acquirement.ItemCopyNumbers), acquirement.ItemCopyNumbers);
+            var isValid = ValidateProperty<NewAcquirementDto>(
+                            nameof(acquirement.ItemCopyNumbers),
+                            acquirement.ItemCopyNumbers
+                          );
             // Assert
             Assert.False(isValid);
         }

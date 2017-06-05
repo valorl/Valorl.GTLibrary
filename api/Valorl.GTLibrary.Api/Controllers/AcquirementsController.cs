@@ -143,7 +143,7 @@ namespace Valorl.GTLibrary.Api.Controllers
         {
             var statusEnum = ParseStatus(status);
 
-            var acq = _acquirementRepository.GetOne(id);
+            var acq = await _acquirementRepository.GetOne(id);
             if (acq == null) return NotFound();
 
             await _acquirementRepository.UpdateStatus(id, statusEnum);

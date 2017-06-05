@@ -63,7 +63,7 @@ namespace Valorl.GTLibrary.DataAccess
 
         public async Task<DbAcquirement> GetOne(Guid id)
         {
-            const string query = @"SELECT Id, AcquirementDateUtc, Status 
+            const string query = @"SELECT Id, AcquirementDateUtc, Status, 
                                           ReceivingLibrary_Id as ReceivingLibraryId, GivingLibrary_Id as GivingLibraryId
                                    FROM ItemAcquirements
                                    WHERE Id = @id";
