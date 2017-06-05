@@ -79,6 +79,7 @@ namespace Valorl.GTLibrary.Api.Controllers
                 dto.LibraryId, 
                 LibraryInfo.Id);
 
+            copies.ForEach(c => c.IsAvailable = false);
 
             var resultDto =  new AcquirementDto()
             {
